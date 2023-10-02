@@ -34,5 +34,5 @@ GET /isActive
 GET /email
 //headers: Cookie: [cookauth_user=<value>]
 
-//response -> <email> || Error: Invalid Credentials || Error: Incalid Cookie 
+//response -> <email> || Error: Invalid Credentials || Error: Invalid Cookie 
 ``````
