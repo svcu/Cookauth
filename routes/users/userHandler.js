@@ -7,8 +7,14 @@ async function isCreated(username, email){
     const verif1 = await user.findOne({username: username});
     const verif2 = await user.findOne({email: email});
 
-    if(verif1 || verif2) return true
-    return false;
+    if(verif1 || verif2){
+        if(verif1){
+            return verif1
+        }else{
+            return verif2
+        }
+    }
+    return null;
 
 }
 
@@ -22,8 +28,7 @@ async function isValidCookie(cookie){
     
     if(verif){
 
-        const currentUser = await user.findOne({username: dCookieBody.username});
-        const verifPwd = await currentUser.verifyPassword(dCookieBody.password, currentUser.password);
+        const verifPwd = await verif.verifyPassword(dCookieBody.password, verif.password);
 
         if(verifPwd){
             return true
@@ -85,14 +90,14 @@ const isActive = async(req, res)=>{
 }
 
 const login = async(req, res)=>{
+
     const {username, password} = req.body;
 
     const verif = await isCreated(username, "");
     
     if(verif){
-        const currentUser = await user.findOne({username: username});
 
-        const verifPwd = currentUser.verifyPassword(password, currentUser.password);
+        const verifPwd = verif.verifyPassword(password, verif.password);
 
         if(verifPwd){
 
