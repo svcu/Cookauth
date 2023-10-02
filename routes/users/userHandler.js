@@ -76,6 +76,24 @@ const login = async(req, res)=>{
     }
 }
 
+const getEmail = async(req, res)=>{
+    try{
+
+        const cookieVerif = await isValidCookie(req.cookie.cookauth_user)
+
+        if(cookieVerif){
+            res.send(cookieVerif.email);
+        }else{
+            res.send("Invalid credentials")
+        }
+       
+
+    }catch(e){
+        console.log(e)
+        res.send("Invalid cookie")
+    }
+}
+
 
 
 /*
@@ -88,5 +106,6 @@ module.exports = {
     createUser,
    // getUsers,
     isActive,
-    login
+    login,
+    getEmail
 }

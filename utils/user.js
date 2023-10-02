@@ -31,13 +31,13 @@ async function isValidCookie(cookie){
         const verifPwd = await verif.verifyPassword(dCookieBody.password, verif.password);
 
         if(verifPwd){
-            return true
+            return verif
         }else{
-            return false
+            return null
         }
 
     }else{
-        return false
+        return null
     }
 }
 
