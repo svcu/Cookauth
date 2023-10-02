@@ -1,8 +1,16 @@
-const { createUser, getUsers } = require("./users/userHandler");
+const { createUser, isActive, login } = require("./users/userHandler");
+//const { getUsers } = require("./users/userHandler");
 
 const router = require("express").Router();
 
 router.post("/user", createUser)
-router.get("/users", getUsers)
+router.post("/login", login)
 
+router.get("/isActive", isActive);
+
+
+
+
+
+//router.get("/users", getUsers)
 module.exports = router;

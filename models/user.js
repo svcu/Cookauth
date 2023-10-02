@@ -17,9 +17,9 @@ userSchema.methods.hashPassword = async(pwd)=>{
     return hash;
 }
 
-userSchema.methods.verifyPassword = async(pwd)=>{
+userSchema.methods.verifyPassword = async(pwd, hash)=>{
     
-    return await bcryptjs.compare(pwd, this.password);
+    return await bcryptjs.compare(pwd, hash);
 
 }
 
