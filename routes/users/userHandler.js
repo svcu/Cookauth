@@ -25,7 +25,7 @@ const createUser = async(req, res)=>{
         res.send("Ok")
 
     }else{
-        res.send("User already exist");
+        res.send("User Already Exists");
     }
     
 }
@@ -71,8 +71,10 @@ const login = async(req, res)=>{
             res.send("OK")
 
         }else{ 
-            res.send("Error");
+            res.send("Invalid credentials");
         }
+    }else{
+        res.send("User Does Not Exists")
     }
 }
 
